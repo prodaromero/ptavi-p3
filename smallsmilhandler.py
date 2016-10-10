@@ -12,9 +12,9 @@ class SmallSMILHandler(ContentHandler):
         self.etiquetas = {
             "root-layout": ["width", "height", "background-color"],
             "region": ["id", "top", "bottom", "left", "right"],
-            "img": ["scr", "region", "begin", "dur"],
-            "audio": ["scr", "begin", "dur"],
-            "textstream": ["scr", "region"]
+            "img": ["src", "region", "begin", "dur"],
+            "audio": ["src", "begin", "dur"],
+            "textstream": ["src", "region"]
             }
 
     def startElement(self, name, attrs):
@@ -25,14 +25,14 @@ class SmallSMILHandler(ContentHandler):
             self.atributos.append([name, dicc])
 
     def get_tags(self):
-        print(self.atributos)
+        return(self.atributos)
 
 
 if __name__ == "__main__":
     parser = make_parser()
     cHandler = SmallSMILHandler()
     parser.setContentHandler(cHandler)
-    parser.parse(open('karaoke.smil.xml'))
+    parser.parse(open('karaoke.smil'))
 
-    cHandler.get_tags()
+    print(cHandler.get_tags())
 

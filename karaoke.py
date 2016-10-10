@@ -7,6 +7,7 @@ from smallsmilhandler import SmallSMILHandler
 
 import sys
 import json
+import urllib.request
 
 def Lectura_Karaoke(lista):
     dicc = ""
@@ -26,7 +27,7 @@ def URL_Found(lista):
         for name in elemento:
             if name == 'src':
                 url = elemento.get(name).split("/")[-1]
-                print(url)
+
 
 if __name__ == "__main__":
 

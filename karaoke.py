@@ -9,16 +9,18 @@ import sys
 import json
 import urllib.request
 
+
 def Lectura_Karaoke(lista):
     dicc = ""
     for element in lista:
-        dicc =  dicc + element[0]
+        dicc = dicc + element[0]
         elemento = element[1]
         for name in elemento:
             dicc = dicc + '\t' + name + '=' + '"' + elemento.get(name) + '"'
         dicc = dicc + '\n'
 
     print(dicc)
+
 
 def URL_Found(lista):
     for element in lista:
@@ -41,14 +43,11 @@ if __name__ == "__main__":
     cHandler = SmallSMILHandler()
     parser.setContentHandler(cHandler)
     parser.parse(open(archivo))
-    
     lista = cHandler.get_tags()
     Lectura_Karaoke(lista)
 
     fichero_json = open('karaoke.json', 'w')
-    json.dump(lista, fichero_json, sort_keys=True, indent=4,separators=(',',':'))
-    fichero_json .close()
+    json.dump(lista, fichero_json, sort_keys=True, indent=4, separators=(',', ':'))
+    fichero_json.close()
 
     URL_Found(lista)
-
-

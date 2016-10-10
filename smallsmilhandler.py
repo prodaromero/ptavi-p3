@@ -4,6 +4,7 @@
 from xml.sax import make_parser
 from xml.sax.handler import ContentHandler
 
+
 class SmallSMILHandler(ContentHandler):
 
     def __init__(self):
@@ -35,4 +36,3 @@ if __name__ == "__main__":
     parser.parse(open('karaoke.smil.xml'))
 
     print(cHandler.get_tags())
-

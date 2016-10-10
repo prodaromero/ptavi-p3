@@ -32,7 +32,7 @@ if __name__ == "__main__":
     parser = make_parser()
     cHandler = SmallSMILHandler()
     parser.setContentHandler(cHandler)
-    parser.parse(open('karaoke.smil'))
+    parser.parse(open('karaoke.smil.xml'))
 
     print(cHandler.get_tags())
 

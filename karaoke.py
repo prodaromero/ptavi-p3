@@ -6,6 +6,7 @@ from xml.sax.handler import ContentHandler
 from smallsmilhandler import SmallSMILHandler
 
 import sys
+import json
 
 def Lectura_Karaoke(lista):
     dicc = ""
@@ -18,12 +19,10 @@ def Lectura_Karaoke(lista):
 
     print(dicc)
 
-
 if __name__ == "__main__":
 
-    archivo = sys.argv[1]
-
     try:
+        archivo = sys.argv[1]
         arch = open(archivo, 'r')
     except:
         sys.exit("Usage: python3 karaoke.py file.smil.")
@@ -35,3 +34,9 @@ if __name__ == "__main__":
     
     lista = cHandler.get_tags()
     Lectura_Karaoke(lista)
+
+    fichero_json = open('karaoke.json', 'w')
+    json.dump(lista, fichero_json, sort_keys=True, indent=4,separators=(',',':'))
+    fichero_json .close()
+
+

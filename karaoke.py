@@ -19,6 +19,15 @@ def Lectura_Karaoke(lista):
 
     print(dicc)
 
+def URL_Found(lista):
+    for element in lista:
+        url = ""
+        elemento = element[1]
+        for name in elemento:
+            if name == 'src':
+                url = elemento.get(name).split("/")[-1]
+                print(url)
+
 if __name__ == "__main__":
 
     try:
@@ -38,5 +47,7 @@ if __name__ == "__main__":
     fichero_json = open('karaoke.json', 'w')
     json.dump(lista, fichero_json, sort_keys=True, indent=4,separators=(',',':'))
     fichero_json .close()
+
+    URL_Found(lista)
 
 
